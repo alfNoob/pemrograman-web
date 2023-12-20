@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Mahasiswa</title>
+    <link rel="stylesheet" href="/static/output.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .text-overflow {
+            max-width: 150px; /* Atur lebar maksimum yang diinginkan */
+            overflow: hidden;
+            text-overflow: ellipsis; /* Tampilkan titik elipsis (...) jika teks terlalu panjang */
+            white-space: nowrap; /* Hindari pemotongan teks berdasarkan spasi */
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-100">
+    <div class="container w-3/4 mx-auto p-4 flex flex-col text-center gap-2 shadow-md
+    dark:bg-dark-eval-3 rounded-lg mt-4 bg-gray-200">
+        <h1 class="text-2xl my-3"><span class="text-purple-900">Daftar</span> Mahasiswa</h1>
+        <table border="1" class="w-full mx-auto border">
+            <tr>
+                <th class="border-2 border-blue-900">ID</th>
+                <th class="border-2 border-blue-900">Nama</th>
+                <th class="border-2 border-blue-900">Hobi</th>
+                <th class="border-2 border-blue-900">Aksi</th>
+            </tr>
+            {% for row in data %}
+            <tr>
+                <td class="border-2 border-blue-900">{{ row[0] }}</td>
+                <td class="border-2 border-blue-900 text-overflow">{{ row[1] }}</td>
+                <td class="border-2 border-blue-900 text-overflow">{{ row[2] }}</td>
+                <td class="border-2 border-blue-900 text-overflow overflow-hidden">
+                    <a href="{{ url_for('edit', id=row[0]) }}"
+                    class="text-lg ">
+                        <i class='bx bx-edit-alt'></i>
+                    </a>
+                    <a href="{{ url_for('hapus', id=row[0]) }}" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"
+                    class="text-lg">
+                        <i class='bx bx-trash' ></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <p class="my-2">
+            <a href="{{ url_for('tambah') }}"
+            class="border-4 border-teal-300 w-20 px-5 py-3 text-center rounded-xl 
+            bg-slate-700 hover:opacity-80 text-white">
+                Tambah Mahasiswa
+            </a>
+        </p>
+    </div>
+</body>
+</html>

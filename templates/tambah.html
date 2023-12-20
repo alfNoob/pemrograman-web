@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Mahasiswa</title>
+    <link rel="stylesheet" href="/static/output.css">
+</head>
+<body >
+    <div class="container mx-auto my-5 flex flex-col justify-center 
+    items-center bg-green-500 text-center w-3/4 rounded-md p-5 shadow-md">
+    <h1 class="text-2xl my-3"><span class="text-yellow-200">Tambah</span> Mahasiswa</h1>
+        <form method="post" action="{{ url_for('tambah') }}"
+        class="w-3/4">
+            <div class="flex flex-col items-start my-2">
+                <label class="text-lg pl-3">Nama:</label>
+                <input type="text" name="nama" required
+                class="pl-2 w-full py-2 rounded-md border-2 border-green-500 outline-none">
+            </div>
+            <div class="flex flex-col items-start my-2 mb-4"> 
+                <label class="text-lg pl-3">Hobi:</label>
+                <input type="text" name="hobi" required
+                class="pl-2 w-full py-2 rounded-md border-2 border-green-500 outline-none">
+            </div>
+            <div class="flex justify-center items-center m-auto">
+                <button type="submit" class="border-2 border-white py-2 w-full rounded-md bg-orange-400 text-white cursor-pointer hover:bg-yellow-500">Simpan</button>
+            </div>
+        </form>
+        <br>
+        <a href="{{ url_for('index') }}" class="text-white hover:scale-110">Kembali ke Daftar Mahasiswa</a>
+    </div>
+</body>
+</html>
